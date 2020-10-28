@@ -6,7 +6,7 @@ describe('spreads/Forgot', () => {
     describe('looks', () => {
         it('renders the initial sign in tab active', () => {
             render(<Forgot />)
-            expect(screen.getByTestId('forgot-container'))
+            expect(screen.getByTestId('forgot-container')).toBeInTheDocument()
         })
     })
 

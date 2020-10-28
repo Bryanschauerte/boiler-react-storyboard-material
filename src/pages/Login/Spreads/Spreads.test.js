@@ -23,7 +23,7 @@ describe('spreads/Spreads', () => {
                 </MemoryRouterWrapper>
             )
 
-            expect(screen.getByTestId('sign-in-container'))
+            expect(screen.getByTestId('sign-in-container')).toBeInTheDocument()
         })
 
         it("renders the '/forgot' path component", () => {
@@ -32,7 +32,7 @@ describe('spreads/Spreads', () => {
                     <Spreads />
                 </MemoryRouterWrapper>
             )
-            expect(screen.getByTestId('forgot-container'))
+            expect(screen.getByTestId('forgot-container')).toBeInTheDocument()
         })
 
         it("renders the '/sign-up' path component", () => {
@@ -41,7 +41,7 @@ describe('spreads/Spreads', () => {
                     <Spreads />
                 </MemoryRouterWrapper>
             )
-            expect(screen.getByTestId('sign-up-container'))
+            expect(screen.getByTestId('sign-up-container')).toBeInTheDocument()
         })
 
         it("redirect to the '/sign-in' path ", () => {
@@ -50,7 +50,7 @@ describe('spreads/Spreads', () => {
                     <Spreads />
                 </MemoryRouterWrapper>
             )
-            expect(screen.getByTestId('sign-in-container'))
+            expect(screen.getByTestId('sign-in-container')).toBeInTheDocument()
         })
     })
 

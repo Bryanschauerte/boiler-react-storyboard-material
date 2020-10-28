@@ -6,7 +6,7 @@ describe('spreads/SignIn', () => {
     describe('looks', () => {
         it('renders the initial sign in tab active', () => {
             render(<SignIn />)
-            expect(screen.getByTestId('sign-in-container'))
+            expect(screen.getByTestId('sign-in-container')).toBeInTheDocument()
         })
     })
 

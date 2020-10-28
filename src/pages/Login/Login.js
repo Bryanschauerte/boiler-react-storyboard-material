@@ -13,41 +13,30 @@ const Login = ({ RedirectComponent }) => {
     const [loginStep, setSetStep] = useState('sign-in')
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12}>
-                <Paper>
-                    {' '}
-                    <div className="login-container" data-testid="login-container">
-                        <Tabs
-                            variant="fullWidth"
-                            centered
-                            value={loginStep}
-                            onChange={(_, v) => setSetStep(v)}
-                            aria-label="wrapped label tabs example"
-                        >
-                            <Tab
-                                data-testid="login-container-sign-in"
-                                value="sign-in"
-                                label="Sign Up"
-                            />
-                            <Tab
-                                data-testid="login-container-sign-up"
-                                value="sign-up"
-                                label="Login"
-                            />
-                            <Tab
-                                data-testid="login-container-forgot"
-                                value="forgot"
-                                label="Forgot"
-                            />
-                        </Tabs>
+        <div className="login-container" data-testid="login-container">
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <Tabs
+                        variant="fullWidth"
+                        centered
+                        value={loginStep}
+                        onChange={(_, v) => setSetStep(v)}
+                        aria-label="wrapped label tabs example"
+                    >
+                        <Tab
+                            data-testid="login-container-sign-in"
+                            value="sign-in"
+                            label="Sign Up"
+                        />
+                        <Tab data-testid="login-container-sign-up" value="sign-up" label="Login" />
+                        <Tab data-testid="login-container-forgot" value="forgot" label="Forgot" />
+                    </Tabs>
 
-                        <RedirectComponent push to={`${loginStep}`} />
-                        <Spreads />
-                    </div>
-                </Paper>
+                    <RedirectComponent push to={`${loginStep}`} />
+                    <Spreads />
+                </Grid>
             </Grid>
-        </Grid>
+        </div>
     )
 }
 
