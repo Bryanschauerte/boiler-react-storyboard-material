@@ -20,7 +20,7 @@ describe('spreads/Forgot', () => {
             const props = {
                 label: 'placeholder',
                 testId: 'textF-test',
-                editable: false,
+                readOnly: false,
                 disabled: true,
             }
 
@@ -46,17 +46,18 @@ describe('spreads/Forgot', () => {
                 expect(classes.indexOf('Mui-disabled')).toEqual(-1)
             })
 
-            it('displays users input', () => {
+            it('on change calls onChange prop', () => {
                 const props = {
                     label: 'placeholder',
                     testId: 'textF-test',
+                    onChange: jest.fn(),
                 }
 
                 render(<TextField {...props} />)
                 const renderedTF = screen.getByTestId(props.testId)
                 fireEvent.change(renderedTF, { target: { value: 'works' } })
 
-                expect(renderedTF.value).toEqual('works')
+                expect(props.onChange).toHaveBeenCalledWith('works')
             })
         })
     })

@@ -1,43 +1,44 @@
 /* eslint-disable react/jsx-no-duplicate-props */
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
 
 const TextFieldComponent = ({
     error,
-    defaultValue,
+    value,
     required,
     disabled,
     label,
-    editable,
+    readOnly,
+    onChange,
     color,
     type,
     variant,
     testId,
-}) => {
-    const [value, setValue] = useState(defaultValue)
-    return (
-        <TextField
-            InputProps={{
-                readOnly: editable,
-            }}
-            inputProps={{
-                'data-testid': testId,
-            }}
-            disabled={!editable}
-            color={color}
-            variant={variant}
-            type={type}
-            label={label}
-            disabled={disabled}
-            required={required}
-            error={!!error}
-            helperText={error ? error.message : false}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-        />
-    )
-}
+    onBlur,
+}) => (
+    // const [value, setValue] = useState(defaultValue)
+
+    <TextField
+        InputProps={{
+            readOnly,
+        }}
+        inputProps={{
+            'data-testid': testId,
+        }}
+        color={color}
+        variant={variant}
+        type={type}
+        label={label}
+        disabled={disabled}
+        required={required}
+        error={!!error}
+        helperText={error ? error.message : false}
+        value={value}
+        onBlur={onBlur}
+        onChange={(e) => onChange(e.target.value)}
+    />
+)
 
 // usage import
 // const [username, userInput] = useInput({ type: "text" })
@@ -45,14 +46,17 @@ const TextFieldComponent = ({
 // coolness found on https://stackoverflow.com/questions/55757761/handle-an-input-with-react-hooks while looking for better way than passing handler/value down
 
 TextFieldComponent.propTypes = {
+    onBlur: PropTypes.func,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    onChange: PropTypes.func,
     type: PropTypes.oneOf(['text', 'password', 'number']),
     testId: PropTypes.string,
     color: PropTypes.oneOf(['primary', 'secondary']),
     variant: PropTypes.oneOf(['outlined', 'filled', 'standard']),
-    editable: PropTypes.bool,
+    readOnly: PropTypes.bool,
     label: PropTypes.string,
     disabled: PropTypes.bool,
-    defaultValue: PropTypes.string,
+
     required: PropTypes.bool,
     error: PropTypes.oneOfType([
         PropTypes.shape({
@@ -66,11 +70,13 @@ TextFieldComponent.defaultProps = {
     testId: 'input-test',
     color: 'primary',
     type: 'text',
-    editable: true,
+    readOnly: false,
     label: '',
     disabled: false,
-    defaultValue: '',
+    onBlur: undefined,
     error: false,
     required: false,
+    onChange: undefined,
+    value: '',
 }
 export default TextFieldComponent

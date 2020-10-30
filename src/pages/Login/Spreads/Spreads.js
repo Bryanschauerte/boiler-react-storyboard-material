@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom'
-import SignUp from './SignUp'
-import SignIn from './SignIn'
-import Forgot from './Forgot'
+import SignUp from './SignUp/SignUp'
+import SignIn from './SignIn/SignIn'
+import Forgot from './Forgot/Forgot'
 
 const Spreads = () => {
     const { path } = useRouteMatch()

@@ -1,8 +1,20 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 // import { green, orange } from '@material-ui/core/colors'
 
-export default createMuiTheme({
-    // overrides: {},
+// const styleContants = {
+//     sizes: {
+//         rule: 8,
+//     },
+// }
+// const createStringSize = (num) => `${num} px`
+const theme = createMuiTheme({
+    // overrides:{
+    //     MuiTextField:{
+    //         root:{
+    //             width:'100%'
+    //         }
+    //     }
+    // },
     palette: {
         error: {
             light: '#e57373',
@@ -48,3 +60,19 @@ export default createMuiTheme({
         },
     },
 })
+
+theme.overrides = {
+    MuiTextField: {
+        root: {
+            width: '100%',
+            margin: '8px',
+        },
+    },
+    MuiPaper: {
+        root: {
+            minHeight: theme.spacing(16),
+            minWidth: theme.spacing(16),
+        },
+    },
+}
+export default theme
