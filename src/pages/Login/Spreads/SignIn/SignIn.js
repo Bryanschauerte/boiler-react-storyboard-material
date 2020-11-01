@@ -1,41 +1,52 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import Form from '../../../../common/components/Form/Form'
 import Header from '../../components/Header/Header'
+import Actions from './components/Actions/Actions'
+import SignInForm from './components/SignInForm/SignInForm'
 
 import './SignIn.scss'
 
 const SignIn = () => {
-    const [formValues, setForm] = useState({})
+    const [readyToSend, sendReady] = useState(false)
+    // we could also useEffects here to disable that button. Lets call that homework...
+    const [formvalues, setFormValues] = useState({})
+
+    const forgotHandler = () => console.log('I would nomally forgot thing')
+
+    const objectKeysHaveValue = (keys, obj) => {
+        let allHaveValue = true
+        keys.forEach((k) => {
+            if (!obj[k]) {
+                allHaveValue = false
+            }
+        })
+
+        return allHaveValue
+    }
+
+    const checkKeys = (obj) => {
+        const keys = Object.keys(obj)
+
+        if (keys.length > 0 && objectKeysHaveValue(keys, obj)) {
+            return true
+        }
+        return false
+    }
+
+    const submitFormHandler = () => {
+        if (checkKeys(formvalues)) {
+            return console.log(`I  would do a thing with ${{ formvalues }}`)
+        }
+        return console.log(`I would NOT a thing with ${{ formvalues }}`)
+    }
 
     return (
         <div className="sign-in-container" data-testid="sign-in-container">
             <Header title="Sign in" />
-            <Form
-                inputBlur={setForm}
-                userInputArray={[
-                    {
-                        label: 'User Name',
-                        stateKey: 'userName',
-                    },
-                    {
-                        label: 'Password',
-                        stateKey: 'password',
-                        type: 'password',
-                    },
-                    {
-                        label: 'Email',
-                        stateKey: 'email',
-                    },
-                ]}
-            />
-            {console.log(formValues, 'submit')}
-            <Button variant="contained" color="primary">
-                Sign In
-            </Button>
-            <Button variant="contained" color="secondary">
-                Sign Up
-            </Button>
+            <SignInForm storeFormValues={setFormValues} />
+            <Actions signInHandler={submitFormHandler} forgotHandler={forgotHandler} />
         </div>
     )
 }

@@ -7,8 +7,6 @@ describe('spreads/Forgot', () => {
     describe('looks', () => {
         it('renders one textField per userInputArray item', () => {
             const props = {
-                label: 'placeholder',
-                testId: 'textF-test',
                 userInputArray: [
                     {
                         label: 'User Name',
@@ -35,24 +33,61 @@ describe('spreads/Forgot', () => {
             expect(screen.getAllByText('Email')[0]).toBeInTheDocument()
         })
 
-        // it('with disabled, is disabled', () => {
-        //     const props = {
-        //         label: 'placeholder',
-        //         testId: 'textF-test',
-        //         editable: false,
-        //         disabled: true,
-        //     }
+        it('renders orientation default of column', () => {
+            const props = {
+                userInputArray: [
+                    {
+                        label: 'User Name',
+                        stateKey: 'userName',
+                    },
+                    {
+                        label: 'Password',
+                        stateKey: 'password',
+                        type: 'password',
+                    },
+                    {
+                        label: 'Email',
+                        stateKey: 'email',
+                    },
+                ],
+            }
 
-        //     render(<TextField {...props} />)
-        //     const renderedTF = screen.getByTestId(props.testId)
-        //     const classes = renderedTF.className
-        //     expect(classes.indexOf('Mui-disabled')).not.toEqual(-1)
-        // })
+            render(<Form {...props} />)
+            const renderedTF = screen.getByTestId('form-container')
+            const { className } = renderedTF
+            expect(className.indexOf('columnForm')).not.toEqual(-1)
+        })
+
+        it('renders orientation prop as row adds row class', () => {
+            const props = {
+                orientation: 'row',
+                userInputArray: [
+                    {
+                        label: 'User Name',
+                        stateKey: 'userName',
+                    },
+                    {
+                        label: 'Password',
+                        stateKey: 'password',
+                        type: 'password',
+                    },
+                    {
+                        label: 'Email',
+                        stateKey: 'email',
+                    },
+                ],
+            }
+
+            render(<Form {...props} />)
+            const renderedTF = screen.getByTestId('form-container')
+            const { className } = renderedTF
+            expect(className.indexOf('rowForm')).not.toEqual(-1)
+        })
     })
 
     // describe('User interactions', () => {
     //     describe('user input', () => {
-
+    //         it('calls inputBlur when a field is clicked out with the total state object', () => {})
     //     })
     // })
 })

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import './Header.scss'
 
 function Header({ title, subTitle }) {
     return (
-        <div data-testid="header-container">
+        <div className="header-container" data-testid="header-container">
             <div>
-                <Typography variant="h1">{title}</Typography>
+                <Typography variant="h3">{title}</Typography>
             </div>
             {subTitle && (
                 <div>

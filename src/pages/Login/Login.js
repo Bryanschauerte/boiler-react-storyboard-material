@@ -6,7 +6,6 @@ import Tab from '@material-ui/core/Tab'
 import Grid from '@material-ui/core/Grid'
 import Spreads from './Spreads/Spreads'
 import LoginBase from './components/LoginBase/LoginBase'
-
 import './Login.scss'
 
 const Login = ({ RedirectComponent }) => {
