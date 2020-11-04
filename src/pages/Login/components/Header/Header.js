@@ -7,7 +7,7 @@ function Header({ title, subTitle }) {
     return (
         <div className="header-container" data-testid="header-container">
             <div>
-                <Typography variant="h3">{title}</Typography>
+                <Typography variant="h5">{title}</Typography>
             </div>
             {subTitle && (
                 <div>

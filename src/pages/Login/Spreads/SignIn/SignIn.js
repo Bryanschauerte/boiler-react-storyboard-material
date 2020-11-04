@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import Button from '@material-ui/core/Button'
-import Form from '../../../../common/components/Form/Form'
 import Header from '../../components/Header/Header'
 import Actions from './components/Actions/Actions'
 import SignInForm from './components/SignInForm/SignInForm'

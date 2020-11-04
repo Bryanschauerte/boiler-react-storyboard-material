@@ -6,36 +6,31 @@ import TextField from '../TextField/TextField'
 import './Form.scss'
 
 // input blur to pass back up the state
-function Form({ inputBlur, userInputArray, orientation }) {
+function Form({ inputBlur, userInputArray, orientation, className }) {
     const stateHandling = {}
     userInputArray.forEach((item) => {
         stateHandling[item.stateKey] = item.value
     })
     const [valueObj, setValue] = useState(stateHandling)
     // eslint-disable-next-line operator-linebreak
-    const rowOrColumnClasses =
-        orientation === 'row' ? 'rowForm formContainer' : 'columnForm formContainer'
+    const rowOrColumnClasses = orientation === 'row' ? 'rowForm' : 'columnForm'
+    const classes = `formContainer ${className} ${rowOrColumnClasses}`
+
     return (
-        <form
-            onSubmit={(x) => x.preventDefault()}
-            className={rowOrColumnClasses}
-            data-testid="form-container"
-        >
-            {userInputArray &&
-                userInputArray.map((textFieldProps) => (
-                    <TextField
-                        key={textFieldProps.stateKey}
-                        {...textFieldProps}
-                        onBlur={() => inputBlur(valueObj)}
-                        onChange={(v) =>
-                            setValue({
-                                ...valueObj,
-                                [textFieldProps.stateKey]: v,
-                            })
-                        }
-                        value={valueObj[textFieldProps.stateKey]}
-                    />
-                ))}
+        <form onSubmit={(x) => x.preventDefault()} className={classes} data-testid="form-container">
+            {userInputArray.map((textFieldProps) => (
+                <TextField
+                    key={textFieldProps.stateKey}
+                    {...textFieldProps}
+                    onBlur={() => inputBlur(valueObj)}
+                    onChange={(v) =>
+                        setValue({
+                            ...valueObj,
+                            [textFieldProps.stateKey]: v,
+                        })}
+                    value={valueObj[textFieldProps.stateKey]}
+                />
+            ))}
         </form>
     )
 }
@@ -72,10 +67,12 @@ function Form({ inputBlur, userInputArray, orientation }) {
 // }
 
 Form.defaultProps = {
+    className: '',
     inputBlur: console.log,
     orientation: 'column',
 }
 Form.propTypes = {
+    className: PropTypes.string,
     inputBlur: PropTypes.func,
     orientation: PropTypes.oneOf(['row', 'column']),
     userInputArray: PropTypes.arrayOf(PropTypes.shape(TextField.propTypes)).isRequired,

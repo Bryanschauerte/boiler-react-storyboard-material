@@ -5,7 +5,7 @@ import './Actions.scss'
 import Typography from '@material-ui/core/Typography'
 
 const Actions = ({ forgotHandler, signInHandler }) => (
-    <div className="actions-container" data-testid="actions-container">
+    <div className="sign-in-actions-container" data-testid="actions-container">
         <Button onClick={signInHandler} variant="contained" color="primary">
             Sign In
         </Button>

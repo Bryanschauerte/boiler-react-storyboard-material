@@ -9,9 +9,9 @@ import { createMuiTheme } from '@material-ui/core/styles'
 // const createStringSize = (num) => `${num} px`
 const theme = createMuiTheme({
     // overrides:{
-    //     MuiTextField:{
+    //     MuiInputBase:{
     //         root:{
-    //             width:'100%'
+    //             height:'36px'
     //         }
     //     }
     // },
@@ -47,6 +47,7 @@ const theme = createMuiTheme({
             contrastText: '#fff',
         },
         secondary: {
+            text: 'rgba(0, 0, 0, 0.54)',
             light: '#a255ff',
             main: '#651fff',
             dark: '#0100ca',
@@ -65,9 +66,26 @@ theme.overrides = {
     MuiTextField: {
         root: {
             width: '100%',
-            margin: '8px',
+            // margin: '8px',
         },
     },
+    MuiFormControl: {
+        root: {
+            width: '100%',
+            // margin: '8px',
+        },
+    },
+    MuiInputBase: {
+        root: {
+            // height: '36px',
+        },
+    },
+    MuiButton: {
+        root: {
+            height: '32px',
+        },
+    },
+
     MuiPaper: {
         root: {
             minHeight: theme.spacing(16),

@@ -66,7 +66,7 @@ TextFieldComponent.propTypes = {
     ]),
 }
 TextFieldComponent.defaultProps = {
-    variant: 'outlined',
+    variant: 'standard',
     testId: 'input-test',
     color: 'primary',
     type: 'text',

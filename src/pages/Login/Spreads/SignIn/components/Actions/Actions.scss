@@ -1,17 +1,17 @@
-.actions-container {
+.sign-in-actions-container {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+justify-content: space-between;
 	height: 52px;
-	// .items-container {
+	align-items: center;
 
-		.actions-forgot-password{
-			margin-left: 32px;
-			cursor: pointer;
-			color: blue;
-	
-		}
-	// }
+	.actions-forgot-password{
+		margin-left: 32px;
+		cursor: pointer;
+		color: blue;
+
+	}
+
 
 
 }

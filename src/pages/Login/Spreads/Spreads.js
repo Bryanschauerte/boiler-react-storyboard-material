@@ -9,13 +9,13 @@ const Spreads = () => {
 
     return (
         <Switch>
-            <Route path={`${path}/forgot`}>
+            <Route exact path={`${path}/forgot`}>
                 <Forgot />
             </Route>
-            <Route path={`${path}/sign-up`}>
+            <Route exact path={`${path}/sign-up`}>
                 <SignUp />
             </Route>
-            <Route path={`${path}/sign-in`}>
+            <Route exact path={`${path}/sign-in`}>
                 <SignIn />
             </Route>
 

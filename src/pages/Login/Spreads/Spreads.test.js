@@ -44,13 +44,13 @@ describe('spreads/Spreads', () => {
             expect(screen.getByTestId('sign-up-container')).toBeInTheDocument()
         })
 
-        it("redirect to the '/sign-in' path ", () => {
+        it("redirect to the '/sign-in' path ", async () => {
             render(
                 <MemoryRouterWrapper initialEntries={['/iliketomashkeys']}>
                     <Spreads />
                 </MemoryRouterWrapper>
             )
-            expect(screen.getByTestId('sign-in-container')).toBeInTheDocument()
+            await expect(screen.getByTestId('sign-in-container')).toBeInTheDocument()
         })
     })
 
