@@ -4,7 +4,7 @@ import SignUpForm from './SignUpForm'
 import { MaterialWrapper } from '../../../../../../common/utils/MaterialWrapper'
 
 export default {
-    title: 'Pages/Login/SignIn/Components/SignUpForm',
+    title: 'Pages/Login/SignUp/Components/SignUpForm',
     component: SignUpForm,
     argTypes: {
         backgroundColor: { control: 'color' },

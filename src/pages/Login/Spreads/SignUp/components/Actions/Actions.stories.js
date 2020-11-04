@@ -5,7 +5,7 @@ import { MaterialWrapper } from '../../../../../../common/utils/MaterialWrapper'
 import Actions from './Actions'
 
 export default {
-    title: 'Pages/Login/SignIn/Components/Actions',
+    title: 'Pages/Login/SignUp/Components/Actions',
     component: Actions,
 }
 
@@ -13,6 +13,6 @@ const Template = (args) => <MaterialWrapper Component={<Actions {...args} />} />
 
 export const SignInActions = Template.bind({})
 SignInActions.args = {
-    createUserHandler: undefined,
-    cancelHandler: undefined,
+    createUserHandler: () => console.log('Clicked create'),
+    cancelHandler: () => console.log('Clicked cancel'),
 }

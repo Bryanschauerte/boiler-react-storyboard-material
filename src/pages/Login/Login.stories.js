@@ -6,13 +6,10 @@ import Login from './Login'
 export default {
     title: 'Pages/Login',
     component: Login,
+    RedirectComponent: <div />,
 }
 
 const Template = (args) => <RouteWrapper needsRoute Component={<Login {...args} />} />
 
 export const LoggedIn = Template.bind({})
 LoggedIn.args = {}
-
-export const LoggedOut = Template.bind({})
-
-LoggedOut.args = {}
